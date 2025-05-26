@@ -9,14 +9,14 @@ Welcome to my RDBMS learning journey! This repository showcases my understanding
 প্রাইমারি কী: একটি টেবিলের প্রতিটি রো ইউনিকলি আইডেন্টিফাই করার জন্য ব্যবহার করা হয়। এটি NULL হতে পারে না এবং ইউনিক হতে হবে।
 **উদাহরণ:**
 
-```
+```sql
 id SERIAL PRIMARY KEY
 ```
 
 ফরেন কী: একটি টেবিলের কলাম যা অন্য টেবিলের প্রাইমারি কীকে রেফারেন্স করে। এটি সম্পর্ক তৈরি করে এবং সম্পর্ক মেইন্টেন করে।
 **উদাহরণ:**
 
-```
+```sql
 user_id INTEGER REFERENCES users(id)
 ```
 
@@ -34,7 +34,7 @@ WHERE ক্লজ ব্যবহার করা হয় ডাটা ফিল
 
 **উদাহরণ:**
 
-```postgreSQL
+```sql
 SELECT * FROM employees WHERE id = 99;
 --- or
 SELECT * FROM employees WHERE salary > 50000;
@@ -45,14 +45,14 @@ SELECT * FROM employees WHERE salary > 50000;
 LIMIT: ডাটাবেজ থেকে সর্বোচ্চ কতগুলো রো রিটার্ন করা হবে তা নির্দিষ্ট করে।
 **উদাহরণ:**
 
-```
+```sql
 SELECT * FROM products LIMIT 10; (প্রথম ১০টি প্রোডাক্ট রিটার্ন করবে)
 ```
 
 OFFSET: কতগুলো রো স্কিপ করে LIMIT রেজাল্ট দেখানো শুরু করবে তা নির্দিষ্ট করে। পেজিনেশনে ব্যবহৃত হয়।
 **উদাহরণ:**
 
-```
+```sql
 SELECT * FROM products LIMIT 10 OFFSET 20; (২১তম থেকে ৩০তম রেকর্ড রিটার্ন করবে)
 ```
 
@@ -73,7 +73,7 @@ FULL JOIN: উভয় টেবিলের সব রেকর্ড
 UPDATE স্টেটমেন্ট দিয়ে টেবিলের এক্সিস্টিং ডাটা আপডেট করা যায়।
 **সিনট্যাক্স:**
 
-```
+```sql
 UPDATE table_name
 SET column1 = value1, column2 = value2, ...
 WHERE condition;
@@ -81,7 +81,7 @@ WHERE condition;
 
 **উদাহরণ:**
 
-```
+```sql
 UPDATE employees
 SET salary = salary * 1.10
 WHERE department = 'IT';
@@ -94,7 +94,7 @@ WHERE department = 'IT';
 GROUP BY ক্লজ একই মান বিশিষ্ট রেকর্ডগুলিকে গ্রুপ করে এবং অ্যাগ্রিগেট ফাংশন (COUNT, SUM, AVG ইত্যাদি) প্রয়োগ করতে সাহায্য করে।
 **উদাহরণ:**
 
-```
+```sql
 SELECT department, COUNT(*) as employee_count, AVG(salary) as avg_salary
 FROM employees
 GROUP BY department;
@@ -108,19 +108,19 @@ PostgreSQL-এ অ্যাগ্রিগেট ফাংশনগুলি ড
 
 **COUNT():** রেকর্ড সংখ্যা রিটার্ন করে
 
-```
+```sql
 SELECT COUNT(*) FROM products;
 ```
 
 **SUM():** সংখ্যাসূচক কলামের মানগুলির যোগফল রিটার্ন করে
 
-```
+```sql
 SELECT SUM(quantity) FROM order_items;
 ```
 
 **AVG():** সংখ্যাসূচক কলামের গড় মান রিটার্ন করে
 
-```
+```sql
 SELECT AVG(price) FROM products;
 ```
 
